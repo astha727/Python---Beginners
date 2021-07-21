@@ -1,0 +1,23 @@
+#In this assignment you will write a Python program somewhat similar to http://www.py4e.com/code3/json2.py. The program will prompt for a URL, read the JSON data from that URL using urllib and then parse and extract the comment counts from the JSON data, compute the sum of the numbers in the file and enter the sum below:
+import urllib.request, urllib.parse, urllib.error
+import json
+
+
+url = input('Enter Location: ')
+
+print("Retrieving url:", url)
+uh = urllib.request.urlopen(url)
+data = uh.read()
+print('Retrieved:', len(data), 'characters')
+info = json.loads(data)
+
+number = 0
+sum = 0
+
+for comment in info["comments"] :
+    sum += int(comment["count"])
+    number += 1
+
+
+print('count:',number)
+print('sum:',sum)
